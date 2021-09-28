@@ -110,11 +110,23 @@ class CustomerViewSet(ModelViewSet):
 
 class OrderViewSet(ModelViewSet):
     http_method_names = ['get', 'post', 'patch', 'delete', 'head', 'options']
+    queryset = Order.objects.all()
 
     def get_permissions(self):
         if self.request.method in ['PATCH', 'DELETE']:
             return [IsAdminUser()]
         return [IsAuthenticated()]
+
+    def retrieve(self, request, *args, **kwargs):
+        if self.request.user.is_staff:
+            return super().retrieve(request, *args, **kwargs)
+
+        order = self.get_object()
+        if order.customer.user_id != self.request.user.id:
+            return Response(status=status.HTTP_403_FORBIDDEN)
+
+        serializer = OrderSerializer(order)
+        return Response(serializer.data)
 
     def create(self, request, *args, **kwargs):
         serializer = CreateOrderSerializer(
@@ -123,7 +135,7 @@ class OrderViewSet(ModelViewSet):
         serializer.is_valid(raise_exception=True)
         order = serializer.save()
         serializer = OrderSerializer(order)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def get_serializer_class(self):
         if self.request.method == 'POST':
@@ -132,12 +144,4 @@ class OrderViewSet(ModelViewSet):
             return UpdateOrderSerializer
         return OrderSerializer
 
-    def get_queryset(self):
-        user = self.request.user
-
-        if user.is_staff:
-            return Order.objects.all()
-
-        customer_id = Customer.objects.only(
-            'id').get(user_id=user.id)
-        return Order.objects.filter(customer_id=customer_id)
+    

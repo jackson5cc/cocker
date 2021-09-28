@@ -12,6 +12,12 @@ drf-nested-routers = "*"
 django-filter = "*"
 djoser = "*"
 djangorestframework-simplejwt = "*"
+redgreenunittest = "*"
+pytest-django = "*"
+pytest-html = "*"
+pytest-cov = "*"
+pytest-watch = "*"
+model-bakery = "*"
 
 [dev-packages]
 autopep8 = "*"

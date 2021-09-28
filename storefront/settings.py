@@ -96,7 +96,7 @@ DATABASES = {
         'NAME': 'storefront2',
         'HOST': 'localhost',
         'USER': 'root',
-        'PASSWORD': 'MyPassword'
+        'PASSWORD': ''
     }
 }
 
@@ -164,3 +164,5 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('JWT',),
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1)
 }
+
+# TEST_RUNNER="redgreenunittest.django.runner.RedGreenDiscoverRunner"
