@@ -21,7 +21,6 @@ model-bakery = "*"
 celery = "*"
 pytest-xdist = "*"
 gunicorn = "*"
-django-heroku = "*"
 
 [dev-packages]
 autopep8 = "*"
