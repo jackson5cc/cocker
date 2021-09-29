@@ -22,6 +22,7 @@ celery = "*"
 pytest-xdist = "*"
 gunicorn = "*"
 whitenoise = "*"
+dj-database-url = "*"
 
 [dev-packages]
 autopep8 = "*"
