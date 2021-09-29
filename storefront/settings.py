@@ -181,3 +181,5 @@ SIMPLE_JWT = {
 # TEST_RUNNER="redgreenunittest.django.runner.RedGreenDiscoverRunner"
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+TEST = 'Mosh'
