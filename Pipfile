@@ -18,6 +18,9 @@ pytest-html = "*"
 pytest-cov = "*"
 pytest-watch = "*"
 model-bakery = "*"
+celery = "*"
+pytest-xdist = "*"
+gunicorn = "*"
 
 [dev-packages]
 autopep8 = "*"

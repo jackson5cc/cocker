@@ -1,9 +1,10 @@
 from decimal import Decimal
+from django.core.mail import send_mail
 from django.db import transaction
 from rest_framework import serializers
 from .signals import order_created
 from .models import Cart, CartItem, Customer, Order, OrderItem, Product, Collection, Review
-
+from .tasks import send_order_confirmation
 
 class CollectionSerializer(serializers.ModelSerializer):
     class Meta:
@@ -169,5 +170,7 @@ class CreateOrderSerializer(serializers.Serializer):
             Cart.objects.filter(pk=cart_id).delete()
 
             order_created.send_robust(self.__class__, order=order)
+
+            send_order_confirmation.delay(order.id)
 
             return order

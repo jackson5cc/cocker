@@ -1,3 +1,4 @@
+from django.core import mail
 from store.models import CartItem, Collection, Customer, Order, OrderItem, Product, Cart
 from django.urls import reverse
 from rest_framework import status
@@ -78,6 +79,18 @@ class TestPlaceOrder:
             reverse('order-list'), {'cart_id': str(cart.id)})
 
         assert not Cart.objects.filter(pk=cart.id).exists()
+
+    # def test_if_data_is_valid_confirmation_email_is_sent(self, api_client, login):
+    #     cart = baker.make(Cart)
+    #     baker.make(CartItem, cart_id=cart.id)
+
+    #     login()
+
+    #     api_client.post(
+    #         reverse('order-list'), {'cart_id': str(cart.id)})
+
+    #     assert len(mail.outbox) == 1
+    #     assert 'subject' in mail.outbox[0].subject
 
 
 @pytest.mark.django_db
