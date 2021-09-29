@@ -2,7 +2,7 @@ from .common import *
 import os
 import dj_database_url
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'enigmatic-everglades-98656.herokuapp.com'
