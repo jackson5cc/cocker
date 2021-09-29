@@ -21,6 +21,7 @@ model-bakery = "*"
 celery = "*"
 pytest-xdist = "*"
 gunicorn = "*"
+whitenoise = "*"
 
 [dev-packages]
 autopep8 = "*"
