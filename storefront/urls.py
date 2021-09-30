@@ -36,5 +36,5 @@ urlpatterns = [
 # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 import dj_database_url
 from pprint import pprint
-x = dj_database_url.config(conn_max_age=600, ssl_require=True)
+x = dj_database_url.config(conn_max_age=600)
 pprint(x)
