@@ -1,0 +1,15 @@
+{
+  "environments": {
+    "test": {
+      "addons": [
+        "cleardb:ignite"
+      ],
+      "scripts": {
+        "test": "pytest"
+      },
+      "env": {
+        "DJANGO_SETTINGS_MODULE": "storefront.settings.test"
+      }
+    }
+  }
+}
