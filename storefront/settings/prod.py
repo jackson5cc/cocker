@@ -11,5 +11,5 @@ ALLOWED_HOSTS = [
 SECRET_KEY = os.environ['SECRET_KEY']
 
 DATABASE = {
-    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+    'default':dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
