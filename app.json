@@ -8,7 +8,7 @@
         "heroku-postgresql:in-dyno"
       ],
       "scripts": {
-        "test": "pytest -s -v"
+        "test": "pytest -s"
       },
       "env": {
         "DJANGO_SETTINGS_MODULE": "storefront.settings.test"

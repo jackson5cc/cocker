@@ -31,13 +31,4 @@ urlpatterns = [
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
     path('__debug__/', include(debug_toolbar.urls)),
-] 
-
-# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-# import dj_database_url
-from pprint import pprint
-# x = dj_database_url.config(conn_max_age=600)
-# pprint(x)
-import os
-pprint("DATABASE_URL")
-pprint(os.environ["DATABASE_URL"])
+]

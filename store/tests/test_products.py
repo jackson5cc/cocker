@@ -59,7 +59,7 @@ class TestListProducts:
         assert response.data['count'] == 2
         assert all([product['collection'] ==
                    collection1.id for product in response.data['results']])
-    
+
     @pytest.mark.django_db
     def test_if_search_filter_applied_only_returns_products_matching_search_phrase(self, api_client):
         baker.make(Product, title='coffee')
@@ -71,8 +71,7 @@ class TestListProducts:
         assert response.status_code == status.HTTP_200_OK
         assert response.data['count'] == 1
         assert response.data['results'][0]['title'] == 'coffee'
-    
-    
+
     @pytest.mark.django_db
     def test_if_filtered_by_price_only_returns_products_in_price_range(self, api_client):
         baker.make(Product, unit_price=1)
@@ -133,6 +132,8 @@ class TestCreateProduct:
 
     @pytest.mark.django_db
     def test_if_product_is_valid_returns_200(self, api_client, login):
+        collection = baker.make(Collection)
+
         login(is_admin=True)
 
         response = api_client.post(reverse('product-list'), {
@@ -140,11 +141,8 @@ class TestCreateProduct:
             'slug': 'b',
             'unit_price': 1,
             'inventory': 2,
-            'collection': 1
+            'collection': collection.id
         })
-
-        print('MOSH DEBUG')
-        print(response.data)
 
         assert response.status_code == status.HTTP_201_CREATED
 
@@ -153,7 +151,7 @@ class TestCreateProduct:
         assert saved_product.slug == 'b'
         assert saved_product.unit_price == 1
         assert saved_product.inventory == 2
-        assert saved_product.collection_id == 1
+        assert saved_product.collection_id == collection.id
 
 
 class TestDeleteProduct:
