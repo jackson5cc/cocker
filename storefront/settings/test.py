@@ -16,5 +16,5 @@ DATABASES = {
 
 
 # DATABASES['default']['TEST'] = {
-#   'NAME': DATABASES['default']['NAME']
+#     'NAME': DATABASES['default']['NAME']
 # }
