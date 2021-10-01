@@ -8,7 +8,7 @@
         "cleardb:ignite"
       ],
       "scripts": {
-        "test": "pytest --reuse-db"
+        "test": "pytest -v --reuse-db"
       },
       "env": {
         "DJANGO_SETTINGS_MODULE": "storefront.settings.test"
