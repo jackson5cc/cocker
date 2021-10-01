@@ -171,6 +171,6 @@ class CreateOrderSerializer(serializers.Serializer):
 
             order_created.send_robust(self.__class__, order=order)
 
-            send_order_confirmation.delay(order.id)
+            # send_order_confirmation.delay(order.id)
 
             return order

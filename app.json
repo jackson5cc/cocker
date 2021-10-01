@@ -8,7 +8,6 @@
         "heroku-postgresql:in-dyno"
       ],
       "scripts": {
-        "pre-test": "echo MOSH; echo $DATABASE_URL;",
         "test": "pytest -s -v"
       },
       "env": {
