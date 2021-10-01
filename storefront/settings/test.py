@@ -14,6 +14,10 @@ DATABASES = {
     'default':dj_database_url.config(conn_max_age=600)
 }
 
+from pprint import pprint
+print('MOSH DEBUG')
+print(DATABASES)
+
 # DATABASES['default']['TEST'] = { 
 #   'NAME': DATABASES['default']['NAME']
 # }
