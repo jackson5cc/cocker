@@ -9,7 +9,7 @@
       ],
       "scripts": {
         "pre-test": "echo MOSH; echo $DATABASE_URL;",
-        "test": "pytest -v"
+        "test": "pytest -s -v"
       },
       "env": {
         "DJANGO_SETTINGS_MODULE": "storefront.settings.test"
