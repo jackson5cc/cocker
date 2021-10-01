@@ -1,11 +1,14 @@
 {
+  "buildpacks": [
+    { "url": "heroku/python" }
+  ],
   "environments": {
     "test": {
       "addons": [
-        "cleardb:ignite"
+        "heroku-cleardb:in-dyno"
       ],
       "scripts": {
-        "test": "pytest"
+        "test": "pytest --reuse-db"
       },
       "env": {
         "DJANGO_SETTINGS_MODULE": "storefront.settings.test"
