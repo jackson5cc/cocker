@@ -46,8 +46,6 @@ def delete_cart_item(api_client):
 
 class TestCarts:
     def test_get_is_not_allowed(self, api_client):
-        print('MOSH DEBUG')
-        print(os.environ['DATABASE_URL'])
         response = api_client.get(reverse('cart-list'))
 
         assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED

@@ -143,6 +143,9 @@ class TestCreateProduct:
             'collection': 1
         })
 
+        print('MOSH DEBUG')
+        print(response.data)
+
         assert response.status_code == status.HTTP_201_CREATED
 
         saved_product = Product.objects.get(pk=response.data['id'])
