@@ -43,6 +43,11 @@ class Product(models.Model):
         ordering = ['title']
 
 
+class ProductImage(models.Model):
+    photo = models.ImageField(upload_to='images')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+
 class Customer(models.Model):
     MEMBERSHIP_BRONZE = 'B'
     MEMBERSHIP_SILVER = 'S'
@@ -100,7 +105,8 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.PROTECT, related_name='items')
+    order = models.ForeignKey(
+        Order, on_delete=models.PROTECT, related_name='items')
     product = models.ForeignKey(
         Product, on_delete=models.PROTECT, related_name='orderitems')
     quantity = models.PositiveSmallIntegerField()
