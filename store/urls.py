@@ -1,3 +1,5 @@
+from django.conf.urls.static import static
+from django.conf import settings
 from pprint import pprint
 from django.urls import path
 from django.urls.conf import include
@@ -21,7 +23,7 @@ products_router.register(
 
 carts_router = routers.NestedDefaultRouter(router, 'carts', lookup='cart')
 carts_router.register('items', views.CartItemViewSet, basename='cart-item')
-# pprint(carts_router.urls)
+# pprint(products_router.urls)
 
 # URLConf
-urlpatterns = router.urls + products_router.urls + carts_router.urls
+urlpatterns = router.urls + products_router.urls + carts_router.urls 
