@@ -24,7 +24,8 @@ gunicorn = "*"
 whitenoise = "*"
 dj-database-url = "*"
 psycopg2="*"
-
+cloudinary = "*"
+django-cloudinary-storage = "*"
 
 [dev-packages]
 autopep8 = "*"
