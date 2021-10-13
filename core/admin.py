@@ -1,4 +1,4 @@
-from store.models import Product
+from store.models import Product, ProductImage
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.contenttypes.admin import GenericTabularInline
@@ -20,8 +20,22 @@ class TagInline(GenericTabularInline):
     model = TaggedItem
 
 
+from django.utils.html import format_html
+
+class ProductImageInline(admin.TabularInline):
+    model = ProductImage
+    readonly_fields = ['thumbnail']
+    
+    def thumbnail(self, obj):
+        return format_html(f'<img src="{obj.photo.url}" class="thumbnail" />')
+
+    class Media: 
+      css = {
+        'all': ['core.css']
+      }
+
 class CustomProductAdmin(ProductAdmin):
-    inlines = [TagInline]
+    inlines = [TagInline, ProductImageInline]
 
 
 admin.site.unregister(Product)
